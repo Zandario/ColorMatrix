@@ -202,7 +202,7 @@ ColorMatrix
 					matrix = list(0,1,0,
 		                          1,0,0,
 		                          0,0,1)
-				if("rgb")
+				if("rbg")
 					matrix = list(1,0,0,
 		                          0,0,1,
 		                          0,1,0)
