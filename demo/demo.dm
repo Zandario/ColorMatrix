@@ -34,8 +34,4 @@ mob
 
 			else
 				var/ColorMatrix/c = new(newColor)
-
-				for(var/i in c.matrix)
-					world << i
-
 				animate(client, color = c.matrix, time = 10)
