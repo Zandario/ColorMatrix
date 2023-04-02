@@ -153,9 +153,9 @@
 	bb = round(bb * 1000) / 1000 * contrast
 
 	matrix = list(
-		rr, gg, bb,
-		rr, gg, bb,
-		rr, gg, bb
+		list(rr, gg, bb),
+		list(rr, gg, bb),
+		list(rr, gg, bb),
 	)
 
 	SetBrightness(brightness)
@@ -169,124 +169,150 @@
 	switch(lowertext(preset))
 		if("invert")
 			matrix = list(
-				-1,0,0,
-				0,-1,0,
-				0,0,-1,
-				1,1,1
+				list(-1,  0,  0),
+				list( 0, -1,  0),
+				list( 0,  0, -1),
+				list( 1,  1,  1),
 			)
 		if("greyscale", "monochromia")
 			matrix = list(
-				0.33,0.33,0.33,
-				0.59,0.59,0.59,
-				0.11,0.11,0.11
+				list(0.33, 0.33, 0.33),
+				list(0.59, 0.59, 0.59),
+				list(0.11, 0.11, 0.11),
 			)
 		if("sepia")
 			matrix = list(
-				0.393,0.349,0.272,
-				0.769,0.686,0.534,
-				0.189,0.168,0.131
+				list(0.393, 0.349, 0.272),
+				list(0.769, 0.686, 0.534),
+				list(0.189, 0.168, 0.131),
 			)
 		if("black & white")
 			matrix = list(
-				1.5,1.5,1.5,
-				1.5,1.5,1.5,
-				1.5,1.5,1.5,
-				-1,-1,-1
+				list( 1.5, 1.5, 1.5),
+				list( 1.5, 1.5, 1.5),
+				list( 1.5, 1.5, 1.5),
+				list(-1,  -1,  -1  ),
 			)
 		if("polaroid")
 			matrix = list(
-				1.438,-0.062,-0.062,
-				0.122,1.378,-0.122,
-				0.016,-0.016,1.483,
-				-0.03,0.05,-0.02
+				list( 1.438, -0.062, -0.062),
+				list( 0.122,  1.378, -0.122),
+				list( 0.016, -0.016,  1.483),
+				list(-0.03,   0.05,  -0.02 ),
 			)
 		if("bgr")
 			matrix = list(
-				0,0,1,
-				0,1,0,
-				1,0,0
+				list(0, 0, 1),
+				list(0, 1, 0),
+				list(1, 0, 0),
 			)
 		if("brg")
 			matrix = list(
-				0,0,1,
-				1,0,0,
-				0,1,0
+				list(0, 0, 1),
+				list(1, 0, 0),
+				list(0, 1, 0),
 			)
 		if("gbr")
 			matrix = list(
-				0,1,0,
-				0,0,1,
-				1,0,0
+				list(0, 1, 0),
+				list(0, 0, 1),
+				list(1, 0, 0),
 			)
 		if("grb")
 			matrix = list(
-				0,1,0,
-				1,0,0,
-				0,0,1
+				list(0, 1, 0),
+				list(1, 0, 0),
+				list(0, 0, 1),
 			)
 		if("rbg")
 			matrix = list(
-				1,0,0,
-				0,0,1,
-				0,1,0
+				list(1, 0, 0),
+				list(0, 0, 1),
+				list(0, 1, 0),
 			)
 		if("rgb")
 			matrix = list(
-				1,0,0,
-				0,1,0,
-				0,0,1
+				list(1, 0, 0),
+				list(0, 1, 0),
+				list(0, 0, 1),
 			)
 		// Colorblindness matrices.
 		if("achromatomaly")
 			matrix = list(
-				0.62,0.32,0.06,
-				0.16,0.78,0.06,
-				0.16,0.32,0.52
+				list(0.62, 0.32, 0.06),
+				list(0.16, 0.78, 0.06),
+				list(0.16, 0.32, 0.52),
 			)
 		if("achromatopsia")
 			matrix = list(
-				0.30,0.59,0.11,
-				0.30,0.59,0.11,
-				0.30,0.59,0.11
+				list(0.30, 0.59, 0.11),
+				list(0.30, 0.59, 0.11),
+				list(0.30, 0.59, 0.11),
 			)
 		if("deuteranomaly")
 			matrix = list(
-				0.80,0.20,0,
-				0.26,0.74,0,
-				0,0.14,0.86
+				list(0.80,0.20,0),
+				list(0.26,0.74,0),
+				list(0,0.14,0.86),
 			)
 		if("deuteranopia")
 			matrix = list(
-				0.63,0.38,0,
-				0.70,0.30,0,
-				0,0.30,0.70
+				list(0.63, 0.38, 0   ),
+				list(0.70, 0.30, 0   ),
+				list(0,    0.30, 0.70),
 			)
 		// monochromia would be here, but it's the same as greyscale.
 		if("protanomaly")
 			matrix = list(
-				0.82,0.18,0,
-				0.33,0.67,0,
-				0,0.13,0.88
+				list(0.82, 0.18, 0   ),
+				list(0.33, 0.67, 0   ),
+				list(0,    0.13, 0.88),
 			)
 		if("protanopia")
 			matrix = list(
-				0.57,0.43,0,
-				0.56,0.44,0,
-				0,0.24,0.76
+				list(0.57, 0.43, 0   ),
+				list(0.56, 0.44, 0   ),
+				list(0,    0.24, 0.76),
 			)
 		if("tritanomaly")
 			matrix = list(
-				0.97,0.03,0,
-				0,0.73,0.27,
-				0,0.18,0.82
+				list(0.97, 0.03, 0   ),
+				list(0,    0.73, 0.27),
+				list(0,    0.18, 0.82),
 			)
 		if("tritanopia")
 			matrix = list(
-				0.95,0.05,0,
-				0,0.43,0.57,
-				0,0.48,0.53,
+				list(0.95, 0.05, 0   ),
+				list(0,    0.43, 0.57),
+				list(0,    0.48, 0.53),
 			)
 
+		if("avali")
+			matrix = list(
+				list(
+					0.5,    // RR
+					0.25,    // RB
+					0.25,    // RG
+					1,    // RA
+				),
+				list(
+					0.25, // GR
+					0.5,    // GB
+					0.25, // GG
+					1,    // GA
+				),
+				list(
+					0.25,  // BR
+					0.25, // BB
+					0.5,    // BG
+					1,    // BA
+				),
+			)
+			// matrix = list(
+			// 	/* RR */ 1   , /* RB */ 0   , /* RG */ 1   ,
+			// 	/* GR */ 1   , /* GB */ 0   , /* GG */ 0   ,
+			// 	/* BR */ 0   , /* BB */ 0   , /* BG */ -1   ,
+			// )
 
 /**
  * Sets color matrix list to an average of two lists
